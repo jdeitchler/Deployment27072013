@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title></title>
+     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+     <script src="http://cdn.kendostatic.com/2013.1.319/js/kendo.all.min.js"> </script>   
+     <link href="http://cdn.kendostatic.com/2013.1.319/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    
+    <!--There is a bug with ScrllView widget in the latest version of Kendo(2013.2.716) which affects
+        the trailers screen. So we are using the previous quarter's version by default. To see the latest
+        features like flat skin, Drawer widget etc, enable 2013.2.716 version.  -->
+   <!--<script src="http://cdn.kendostatic.com/2013.2.716/js/kendo.all.min.js"> </script>   
+     <link href="http://cdn.kendostatic.com/2013.1.716/styles/kendo.mobile.all.min.css" rel="stylesheet" />-->
+    
+    
+    <link href="styles/Style.css" rel="stylesheet" />
+    <script>
+        var MyAgDataMobile = MyAgDataMobile || {};
+    </script>
+    <script src="js/configuration.js"> </script>
+    <script src="js/common.js"> </script>
+    <script src="js/cordova-2.6.0.js"></script>
+    <script src="js/data-access.js"> </script>
+    <script src="js/user-account.js"> </script>
+    <script src="js/movie-tickets.js"> </script>
+    <script src="js/grower-list.js"> </script>
+    <script src="js/theaters-movie-list.js"> </script>
+    <script src="js/book-tickets.js"> </script>
+    <script src="js/trailers.js"> </script>
+    <style>
+        .no-backbutton .km-back {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div data-role="view" id="mt-home-main-view" data-title="Account"
+        data-init="MyAgDataMobile.growerList.initialize"
+        data-model="MyAgDataMobile.userAccount.viewModel"
+        data-layout="mt-main-layout" class="no-backbutton">
+
+        <!-- This section is bound by Kendo MVVM Invisible binding -->
+        <div id="usracc-login-section" data-bind="invisible: isUserLoggedIn ">
+            <br /> <br />
+            <ul data-role="listview" data-style="inset">
+
+                <li>
+                    <label>User Name:  </label>
+                    <input type="text" data-bind="value: userName" id="user-acc-username" /></li>
+                <li>
+                    <label>Password:  </label>
+                    <input type="text" id="user-acc-password" data-bind="value: password" /></li>
+
+            </ul>
+            <div class="centerAlign">
+                <a data-role="button" id="user-acc-login-button" data-bind="click: userLogin">Login </a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- layout -->
+    <div data-role="layout" data-id="mt-main-layout">
+        <header data-role="header">
+            <div data-role="navbar" id="mt-main-layout-navbar">
+                <span data-role="view-title">MyAgData</span>
+                <a data-align="right" style="display: none" class="mt-main-layout-btn-logoff"
+                    data-click="MyAgDataMobile.userAccount.viewModel.logOff" data-role="button">Log Off</a>
+            </div>
+        </header>
+    </div>
+
+    <script>
+        //Kendo Mobile is initialized in this method
+        MyAgDataMobile.main.initializeApp();
+
+    </script>
+</body>
+</html>

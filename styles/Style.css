@@ -1,0 +1,162 @@
+﻿
+/*kendo  styles overrides*/
+.km-ios .km-navbar {
+    background-color:steelblue;
+}
+
+.km-loader {
+    color: #fff;
+    text-align:center;
+}
+/*style for all ButtonGroups inside view with id mt-home-main-view (home view)*/
+.km-ios  #mt-home-main-view  .km-buttongroup  .km-button:not(.km-state-active)  {
+    width:70px;
+    font-size: 1em;
+    background-color:gray;
+    color:white;
+    text-shadow:none;
+}
+.km-ios  #mt-home-main-view .km-buttongroup .km-state-active {
+    width:70px;
+    font-size: 1em;
+    background-color:#FF6600;
+    color:white;
+    background-image:none;
+ }
+
+.km-ios6 .km-view-title {
+    background-color: #2cabe2;
+}
+
+/*this removes the dirty blue line background
+    when data-style="inset" is set for listviews
+    */
+.km-ios .km-insetcontent {
+    background:none;
+}
+
+
+/*user styles*/
+.listpadding {
+    padding-left: 1em; padding-bottom: 1em; text-decoration: none;
+}
+
+.alignmiddle {
+    vertical-align: middle;
+}
+
+.centerAlign {
+    text-align:center;
+}
+
+h4 {
+    color:#385487;
+}
+
+div.usracc-bkng-hstry-list {
+    padding-left:10px;
+}
+
+.valueText {
+    color: #385487;
+    font-size: 14px;
+}
+
+#usracc-bkng-hstry-list.km-list {
+    font-size:11px;
+}
+
+.km-ios #listview-home .km-listview .km-list > li {
+        border:double;
+}
+
+.mt-listitem-title-old {
+    font-size:19px;
+    font-weight:bold;
+    color:darkblue; 
+}
+
+.mt-listitem-title {
+    font-size: medium;
+    font-weight:bold;
+    color:black;
+}
+
+.km-android .mt-listitem-title-old {
+    font-size:19px;
+    font-weight:bold;
+    color:rgb(104, 188, 235);    
+}
+
+.km-android .mt-listitem-title {
+    font-size:16px;
+    font-weight:bold;
+    color:rgb(0,0,0);    
+}
+
+.mt-highlight-label-old {
+    color:maroon;
+}
+
+.mt-highlight-label {
+    font-size: small;
+    font-weight:bold;
+    color:black;
+}
+
+.mt-highlight-label2 {
+    color:green;
+}
+
+.mt-timings{
+    color:green !important;
+    text-decoration: none !important;
+}
+
+.mt-normal-label {
+     font-weight:normal;
+}
+
+.mt-grower-details {
+    padding-left:5px;
+    font-weight:normal;
+}
+
+.mt-movie-details {
+    padding-left:75px;
+    font-weight:normal;
+}
+
+#mt-theaters-movie-details {
+    min-height: 100px;    
+}
+.mt-title {
+    font-weight:bold;
+    font-size:18px;
+}
+
+
+.mt-ticket-num-input {
+    width: 45px !important;
+    position: relative !important;
+    border: ridge !important;
+    min-width: 45px !important;
+}
+.mt-total-amount {
+    color:orangered;
+    font-size:25px;
+}
+.mt-list-image {
+    vertical-align:middle;    
+}
+
+.mt-purchase-button {
+    background-color: orangered !important;
+    width:100px;
+}
+
+/*trailer*/
+.mt-trailer-item {
+    text-align:center;
+}
+ 

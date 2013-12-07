@@ -1,0 +1,66 @@
+﻿  <div data-role="view" data-title="FieldDetail" 
+       data-init="MyAgDataMobile.fieldDetail.initialize"
+        data-model="MyAgDataMobile.fieldDetail.viewModel"
+       id="mt-theaters-view"  data-layout="mt-detail-layout" >
+        <div id="usracc-user-details">
+            <div>
+                <ul data-role="listview">
+                     <li>Field ID               
+                            <input type="text" id="Text1" data-bind="value: fieldId" />
+                    </li>
+                    <li>Crop1 Name:  
+                        <select id="CropDropDown" name="CropDropDown" 
+                                data-role="dropdownlist" 
+                                data-bind="source: cropList, value: Id, events: { change: onTreatmentTypeChange }" 
+                                data-text-field="cropName" data-value-field="cropCode" 
+                                required data-required-msg="Crop is required">
+
+                        </select>
+                    </li>
+                    <li>Practice1:  
+                        <select id="PracticeDropDown" name="PracticeDropDown" 
+                                data-role="dropdownlist" 
+                                data-bind="source: practiceList, value: Practice_Code, events: { change: onTreatmentTypeChange }" 
+                                data-text-field="PName" data-value-field="Practice_Code" 
+                                required data-required-msg="Practice is required">
+
+                        </select>
+                    </li>
+                    <li>Type1:  
+                        <select id="TypeDropDown" name="TypeDropDown" 
+                                data-role="dropdownlist" 
+                                data-bind="source: typeList, value: Type_Code, events: { change: onTreatmentTypeChange }" 
+                                data-text-field="TName" data-value-field="Type_Code" 
+                                required data-required-msg="Type is required">
+
+                        </select>
+                    </li>
+                    <li>Planting1 Date:
+                            <input id="plantingdate" style="width:150px;" />
+                    </li>
+                    <li>Acres1:                      
+                            <input type="text" id="Text3" data-bind="value: acres" />
+                    </li>
+                    <li>Share:                      
+                            <input type="text" id="Text4" data-bind="value: share" />
+                    </li>
+                    <li>Field Name:                      
+                            <input type="text" id="Text2" data-bind="value: fieldName" />
+                    </li>
+                </ul>
+            </div>
+            <br />
+            <div class="centerAlign">
+                <a data-role="button" id="A1" data-bind="click: updateClick ">Update </a>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="layout" data-id="mt-detail-layout">
+        <header data-role="header">
+            <div data-role="navbar" id="mt-main-layout-navbar">
+                <span data-role="view-title">Field Details</span>
+                    <a data-align="left" data-role="backbutton">Back</a>
+            </div>
+        </header>
+    </div>

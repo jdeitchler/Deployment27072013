@@ -1,0 +1,84 @@
+﻿
+    <script src="js/field-detail.js"> </script> 
+   <div data-role="view" data-layout="detail-layout" data-title="FieldDetail" 
+       data-show="MyAgDataMobile.fieldDetail.showDetail"  
+        data-model="MyAgDataMobile.fieldDetail.viewModel"
+       id="mt-theaters-view">
+        <div id="usracc-user-details">
+            <div>
+                <ul data-role="listview">
+                     <li><label for="fname" style="justify-content: center">Field ID:</label>               
+                            <input type="text" id="Text1" data-bind="value: partFieldId" />
+                    </li>
+                    <li>Crop Name:
+                            <select id="CropDropDown" name="Crop" 
+                                    data-role="dropdownlist" data-change="cropSelect" 
+                                    data-bind="source: cropList, value: cropCode" 
+                                    data-text-field="Commodity_Name" data-value-field="Id" 
+                                    required data-required-msg="Crop is required">
+                            </select>
+                    </li>
+                    <li>Practice:  
+                        <select id="Practice" name="Practice" 
+                                data-role="dropdownlist" 
+                                data-bind="source: practiceList, value: practiceCode" 
+                                data-text-field="Practice_Abbreviation" data-value-field="Practice_Code" 
+                                required data-required-msg="Practice is required">
+                        </select>
+                    </li>
+                    <li>Type:  
+                        <select id="Type" name="Type" 
+                                data-role="dropdownlist" 
+                                data-bind="source: typeList, value: typeCode" 
+                                data-text-field="Full_Type_Name" data-value-field="Type_Code" 
+                                required data-required-msg="Type is required">
+                        </select>
+                    </li>
+                    <li>Planting Date:
+                            <input id="plantingdate" style="width:150px;" />
+                    </li>
+                    <li><span style="text-align:right">Acres:</span>                      
+                            <input type="text" id="Text3" data-bind="value: acres" />
+                    </li>
+                    <li>Share:                      
+                            <input type="text" id="Text4" data-bind="value: share" />
+                    </li>
+                    <li>Field Name:                      
+                            <input type="text" id="Text2" data-bind="value: fieldName" />
+                    </li>
+                </ul>
+            </div>
+            <br />
+            <div class="centerAlign">
+                <a data-role="button" id="A1" data-bind="click: updateClick ">Update </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div data-role="layout" data-id="detail-layout">
+        <header data-role="header">
+            <div data-role="navbar" id="detail-layout-navbar">
+                <a data-align="left" data-role="backbutton">Back</a>
+                <span data-role="view-title">Field Details</span>
+            </div>
+        </header>
+    </div>
+
+<script>
+    //Change Crop Function
+    function cropSelect(e) {
+        alert('Select Crop');
+      //   var dropDownVal = $("#CropDropDown").val();
+      //    alert("value = " + dropDownVal);
+        ////alert("Crop Code Value = " + MyAgDataMobile.fieldDetail.viewModel.cropCode);
+        ////alert("type code value = " + MyAgDataMobile.fieldDetail.viewModel.typeCode);
+        MyAgDataMobile.fieldDetail.viewModel.typeCode = "";
+        MyAgDataMobile.fieldDetail.viewModel.practiceCode = "";
+        ////alert("type code value = " + MyAgDataMobile.fieldDetail.viewModel.typeCode);
+        $("#Type").data('kendoDropDownList').value(MyAgDataMobile.fieldDetail.viewModel.typeCode);
+        $("#Practice").data('kendoDropDownList').value(MyAgDataMobile.fieldDetail.viewModel.practiceCode);
+        MyAgDataMobile.fieldDetail.loadPracType();
+
+    }
+</script>
