@@ -99,7 +99,7 @@
         data-model="MyAgDataMobile.fieldList.viewModel" data-group="GroupBy"
          data-show="MyAgDataMobile.fieldList.show"  data-layout="myagdata-layout">
         <!-- PartField Button Group -->
-        <ul data-role="buttongroup" data-index="0" data-select="MyAgDataMobile.fieldList.mobileListViewDataBindInitGrouped">
+        <ul data-role="buttongroup" id="fieldlistButtonGroup" data-index="0" data-select="MyAgDataMobile.fieldList.mobileListViewDataBindInitGrouped">
             <li>Field</li>
             <li>County</li>
             <li>State</li>
@@ -121,9 +121,9 @@
 
          <header data-role="header">
             <div data-role="navbar">
-                <a class="nav-button" data-align="left" data-role="backbutton" id="cancel">Cancel</a>
+                <a class="nav-button2" data-align="left" data-role="backbutton" id="cancel">Cancel</a>
                 <span data-role="view-title">Details</span>
-                <a class="nav-button" data-align="right" data-role="button" data-bind="click: updateClick " id="done">Update</a>
+                <a class="nav-button2" data-align="right" data-role="button" data-bind="click: updateClick " id="done">Update</a>
             </div>
         </header>
 
@@ -273,7 +273,7 @@
 
     .km-ios .km-listinset>li, 
     .km-ios .km-listgroupinset .km-list>li {
-    margin-right: -.7em;
+        margin-right: -.7em;
         }
 
     .km-ios #edit-listview .km-navbar,
@@ -347,44 +347,41 @@
     }
 
     .km-arrow-e:after,
-    .km-arrow-e:before
-    {
+    .km-arrow-e:before {
         content: "\E0ef";
-    }
+        }
 
     .km-landicon:after,
-    .km-landicon:before
-    {
+    .km-landicon:before {
         content: "\E07c";
-    }
-
+        }
 
     .km-listview-link:after {
-    color: #7B7B7B;
-    border-color: #777;
-    content: "\a0";
-    display: block;
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    margin-top: -0.32rem;
-    margin-left: -0.2rem;
-    border-style: solid;
-    border-width: .24rem .24rem 0 0;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    width: .5rem;
-    height: .5rem;
-    display: inline-block;
-    vertical-align: middle;
-    }
+        color: #7B7B7B;
+        border-color: #777;
+        content: "\a0";
+        display: block;
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        margin-top: -0.32rem;
+        margin-left: -0.2rem;
+        border-style: solid;
+        border-width: .24rem .24rem 0 0;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
+        width: .5rem;
+        height: .5rem;
+        display: inline-block;
+        vertical-align: middle;
+        }
 
     .km-custom {
       -webkit-mask-box-image: url("../images/add.png");
-    }
+        }
     
   /*  .km-ios .km-button .km-icon:before, .km-ios .km-button .km-contactadd:before, .km-ios .km-button .km-rowdelete:before, .km-ios .km-button .km-rowinsert:before, .km-ios .km-button .km-detaildisclose:before {
     display: none;
@@ -480,38 +477,48 @@
 
         .loginDivLeft  {
            width: 50%;
-               }
+            }
 
         .loginDivRight {
            width: 50%;
-               }
+           }
 
         .km-ios .km-header > .km-buttongroup .km-state-active, .km-ios .km-footer > .km-buttongroup .km-state-active, .km-ios .km-content .km-buttongroup .km-state-active {
-               color: #fff;
-               border-color: rgba(0,0,0,0.4);
-               background-color: rgb(35, 139, 173);
-           }
+            color: #fff;
+            border-color: rgba(0,0,0,0.4);
+            background-color: rgb(35, 139, 173);
+            }
           
         .km-ios .km-list .k-dropdown-wrap .k-input {
-        color: #385487;
-        text-align: left;
-        }
+            color: #385487;
+            text-align: left;
+            }
 
         .km-ios .km-navbar {
-         background: -webkit-linear-gradient(top,  
+            background: -webkit-linear-gradient(top,  
                                     rgba(110, 217, 254, 0.95) 0%, 
                                     rgba(97, 168, 192, 0.95) 50%,
                                     rgba(97, 168, 191, 0.95) 100%);
-        }
+            }
+        
         /* Chrome10+,Safari5.1+ */
         .nav-button {
            height: 17px;
             }
 
-        .km-ios .km-button {
+       .km-ios .km-button {
             width: 56px;
             height: 1.2em;
             margin-top: .3em;
+            } 
+
+        .km-ios .nav-button2 {
+            width: 56px;
+            height: 1.2em;
+            font-size: small;
+            margin-top: .7em;
+            padding: .4em;
+            text-align: center;
             }
 
         #backPartField {
@@ -586,6 +593,7 @@
             font-weight: 100;
             font-size: large;
             margin-bottom: 2px;
+            height: 2em;
             }
 
         .km-map:before, .km-map:after {

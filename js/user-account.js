@@ -6,8 +6,8 @@
         userId: 0,
 		firstName: "",
 		lastName: "",
-		userName: "username", //hardcoded
-		password: "password", //hardcoded
+		userName: "", //hardcoded
+		password: "", //hardcoded
 		userAddress: "",
 		userEmailAddress: "",
 		subscribedForNewsLetter:false,

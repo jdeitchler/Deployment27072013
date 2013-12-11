@@ -13,7 +13,8 @@ MyAgDataMobile.fieldList = (function () {
     });
 
     function getFieldList(groupBy) {
-   //    alert("Get the List of Field for GrowerId = " + viewModel.selectedGrower.growerId);
+        //    alert("Get the List of Field for GrowerId = " + viewModel.selectedGrower.growerId);
+
         var serviceOptions = {
             url: MyAgDataMobile.configuration.getFieldListUrl,
 //            data: { id: 16, growerId: 2036, cropYear: 2013, seasonNumber: 44, farmOpNumber: 22, groupBy: groupBy},    //id=16&growerId=2036&cropYear=2013&seasonNumber=44&farmOpNumber=22
@@ -27,19 +28,34 @@ MyAgDataMobile.fieldList = (function () {
             },    
             requestType: "GET",
             dataType: "JSON",
-       //     group: "cropName",
+        //     group: "cropName",
         //    callBack: callBack //,
             //  group: { field: "letter" }
             callBack: function (result) {
                 if (result.success === true) {
-                      viewModel.set("fieldList", result.data);
-                      $("#partfield-list").kendoMobileListView({
-                          style: "inset",
-                          dataSource: kendo.data.DataSource.create({ data: viewModel.fieldList, group: "GroupBy" }),
-                          //  template: "${Script1Template}",
-                          template: kendo.template($("#fieldlist_template").html()) //,
-                       // fixedHeaders: true
-                    });
+                    viewModel.set("fieldList", result.data);
+                    var buttongroup = $("#fieldlistButtonGroup").data("kendoMobileButtonGroup");
+                    if (buttongroup.selectedIndex == 1 ||
+                        buttongroup.selectedIndex == 2 ||
+                        buttongroup.selectedIndex == 3) {
+                        $("#partfield-list").kendoMobileListView({
+                            style: "inset",
+                            dataSource: kendo.data.DataSource.create({ data: viewModel.fieldList, group: "GroupBy" }),
+                            //  template: "${Script1Template}",
+                            template: kendo.template($("#fieldlist_template").html()) //,
+                            // fixedHeaders: true
+                        });
+                    }
+                    else {
+                        $("#partfield-list").kendoMobileListView({
+                            style: "inset",
+                            fixedHeaders: false,
+                            dataSource: kendo.data.DataSource.create({ data: viewModel.fieldList}), //, group: "GroupBy" }),
+                            //  template: "${Script1Template}",
+                            template: kendo.template($("#fieldlist_template").html()) //,
+                            // fixedHeaders: true
+                        });
+                    }
 
                 } else {
                     //any error handling code
@@ -57,11 +73,11 @@ MyAgDataMobile.fieldList = (function () {
 
     //handler for show event of the view
     function show(e) {
-   //    alert('made it to the show list');
+        // alert('made it to the show list');
+        var buttongroup = $("#fieldlistButtonGroup").data("kendoMobileButtonGroup");
 
         //hard coding today's date for selected date
         viewModel.set('selectedDate', new Date().toLocaleDateString());
-     //   alert("New Page");
         //read the selected movie's details from the query string
         if (e.view.params.GrowerId != null) {
             viewModel.set("selectedGrower", {
@@ -74,13 +90,28 @@ MyAgDataMobile.fieldList = (function () {
 
             $("#mt-main-layout-navbar").data("kendoMobileNavBar").title(titleString.toString());
         }
-      //  $("#nav-button").kendoMobileBackButton();
+        //  $("#nav-button").kendoMobileBackButton();
+        //        var navbar = $("#NavBarTitle").kendoMobileNavBar();
+        //      navbar = "test";
 
-//        var navbar = $("#NavBarTitle").kendoMobileNavBar();
-  //      navbar = "test";
+        //   getFieldList("FieldName");
+     //   $("#km-group-title").css({ 'height': '2em' });
 
-        getFieldList("FieldName");
-     //   $(view.header[0]).find("km-view-title").html("CUSTOM TEXT HERE");
+        if (buttongroup.selectedIndex == 1)
+            getFieldList("County");
+        else if (buttongroup.selectedIndex == 2)
+            getFieldList("State");
+        else if (buttongroup.selectedIndex == 3)
+            getFieldList("CropName");
+        else {
+        //    alert('made it to the show list');
+            getFieldList("FieldName");
+            //  $("#km-group-title").css({ 'height': '.2em' });
+        //    $("#partfield-list").kendoMobileListView({
+       //         style: "inset",
+        }
+
+        //   $(view.header[0]).find("km-view-title").html("CUSTOM TEXT HERE");
     }
 
     //retrieve list of theaters from the service
