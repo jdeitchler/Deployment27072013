@@ -7,8 +7,8 @@
 
     return {            
         serviceUrl: serviceUrl,
-        accountUrl: myAgDataServiceUrl + "Account/",
-        accountLoginUrl: myAgDataServiceUrl + "Account/LogUserIn",
+        accountUrl: myAgDataServiceUrl + "Account/Login",
+        accountLoginUrl: myAgDataServiceUrl + "Account/Login",
         getMovieListUrl: serviceUrl + "Movies/GetMovieList/",
         getGrowerListUrl: myAgDataServiceUrl + "growers/getgrowers/",
         getFieldListUrl: myAgDataServiceUrl + "partfield/GetGrowerPartFieldShapeViewModels/",
