@@ -3,7 +3,7 @@ MyAgDataMobile.growerList = (function () {
 
     var viewModel = kendo.observable({
         growerList: {},
-        selectedGrowerId: 0
+        selectedUserId: 0
     });
 
     //fetches the list of movies from the service
@@ -11,7 +11,7 @@ MyAgDataMobile.growerList = (function () {
     function getGrowerList(listType) {
         var growerListoptions = {
             url: MyAgDataMobile.configuration.getGrowerListUrl,
-            data: { userid: viewModel.selectedGrowerId, cropyear: 2013 },   //id=16&cropyear=2013  userid=16&cropyear=2013
+            data: { userid: viewModel.selectedUserId, cropyear: myCropYear}, // 2013 },   //id=16&cropyear=2013  userid=16&cropyear=2013
             requestType: "GET",
             dataType: "JSON",
             callBack: callBack
@@ -80,8 +80,9 @@ MyAgDataMobile.growerList = (function () {
 
     //handler for show event of the view
     function showGrowerList(e) {;
+      //  alert("Grower Crop Year Value = " + myCropYear);
         //read the selected movie's details from the query string
-        viewModel.set("selectedGrowerId", e.view.params.userId);
+        viewModel.set("selectedUserId", e.view.params.userId);
         initList();
     }
 

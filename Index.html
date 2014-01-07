@@ -25,7 +25,7 @@
     <script src="js/trailers.js"> </script>   
     <script src="js/grower-list.js"> </script> 
     <script src="js/field-detail.js"> </script> 
-   
+    <script src="js/preferences.js"> </script>    
     <style>
         .no-backbutton .km-back {
             visibility: hidden;
@@ -118,7 +118,6 @@
          data-show="MyAgDataMobile.fieldDetail.showDetail"  
          data-model="MyAgDataMobile.fieldDetail.viewModel"
          id="fieldDetails-view">
-
          <header data-role="header">
             <div data-role="navbar">
                 <a class="nav-button2" data-align="left" data-role="backbutton" id="cancel">Cancel</a>
@@ -126,7 +125,6 @@
                 <a class="nav-button2" data-align="right" data-role="button" data-bind="click: updateClick " id="done">Update</a>
             </div>
         </header>
-
         <form>
             <ul data-role="listview" id="edit-listview" data-style="inset" onclick="">
                 <li>
@@ -192,14 +190,51 @@
         </div>
     </div>
 
-        <!-- about view -->
-    <div data-role="view" id="performance-view" data-title="Performance" data-layout="myagdata-layout">
-        <div style="padding: 17px; color: white; font-size: large"><br /><br />
-            Performance Settings coming soon...<br /><br />
-             <div style="display:table-cell; vertical-align:middle; text-align:center">
-                <img src="images/ComingSoon3.jpg" /> 
-             </div>
+    <!-- Preferences view -->
+    <div data-role="view" data-title="Preference" 
+         data-show="MyAgDataMobile.preferences.showPreferences"  
+         data-model="MyAgDataMobile.preferences.viewModel"
+         id="preference-view" data-layout="myagdata-layout">
+
+
+        <form>
+        <div font-size: large">
+             <ul data-role="listview" id="listtestheader" >
+                    <li style="background-color: transparent; color: white; height: 4em; padding-top: 1.7em; font-size: large;">System Preferences:
+                    </li>
+            </ul>
+
+            <ul data-role="listview" id="Ul1" data-style="inset" onclick="">
+                    <li>Crop Year:
+                            <select id="CropYearDropdown" name="CropYear" 
+                                    data-role="dropdownlist" data-change="MyAgDataMobile.preferences.cropyearSelect" 
+                                    data-bind="source: cropyearList, value: cropyearId" 
+                                    data-text-field="name" 
+                                    data-value-field="value" 
+                                    required data-required-msg="Crop Year is required">
+                            </select>
+                    </li>
+                    <li>Season:
+                            <select id="SeasonDropdown" name="Season" 
+                                    data-role="dropdownlist" data-change="MyAgDataMobile.preferences.seasonSelect" 
+                                    data-bind="source: seasonList, value: seasonId" 
+                                    data-text-field="name" 
+                                    data-value-field="value" 
+                                    required data-required-msg="Season is required">
+                            </select>
+                    </li>
+                    <li>Farm Operation:
+                            <select id="FarmOperationDropdown" name="FarmOperation" 
+                                    data-role="dropdownlist" data-change="MyAgDataMobile.preferences.farmoperationSelect" 
+                                    data-bind="source: farmoperationList, value: farmoperationId" 
+                                    data-text-field="name" 
+                                    data-value-field="value" 
+                                    required data-required-msg="Farm Operation is required">
+                            </select>
+                    </li>
+            </ul>
         </div>
+        </form>
     </div>
 
     <!-- about view -->
@@ -217,26 +252,27 @@
         <header data-role="header">
             <div data-role="navbar" id="mt-main-layout-navbar">
                 <a class="nav-button" id="backPartField" data-align="left" data-icon="myBackIcon" data-role="backbutton"></a>
-                <span data-role="view-title" class="NavBarTitle">PartField</span><br /><span class="titleDetails" id="titleDetails">2014 - Spring Plant</span>
+                <span data-role="view-title" class="NavBarTitle">PartField</span><br />
+                <span class="titleDetails" id="titleDetails">2014 - Spring Plant</span>
           <!--      <a data-align="left" style="display: none" class="mt-main-layout-btn-logoff"
                     data-click="MyAgDataMobile.userAccount.viewModel.logOff" data-role="button">Log Off</a> -->
             </div>
         </header>
-        <footer data-role="footer">
+        <footer data-role="footer" id="custom-footer">
             <div data-role="tabstrip"  data-select='tabChange' id="custom-tabstrip">
                 <a href="#fieldlist-view" id="fieldlist-profile" data-icon="fieldList" >
                     <br />Field List
                 </a>
-                <a href="Trailers.html"  data-icon="maps" >
+                <a href="Trailers.html" id="map-button" data-icon="maps" >
                      <br />Map 
                 </a>
-                 <a href="#history-view"   data-icon="season" >                    
+                 <a href="#history-view" id="history-button"  data-icon="season" >                    
                         <br />Season
                 </a>
-                <a href="#performance-view" data-icon="preferences" >                    
+                <a href="#preference-view" id="preferences-button" data-icon="preferences" >                    
                         <br />Preferences
                 </a>
-                <a href="#more-view" data-icon="moredetails" >                    
+                <a href="#more-view" id="more-button" data-icon="moredetails" >                    
                         <br />More
                 </a>
             </div>
@@ -812,23 +848,103 @@
             background: #2185a6;
         }
 
+        .km-tablet .km-ios .km-content {
+        background: black;
+        }
+
+        .km-tablet .km-buttongroup {
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 5px;
+        margin-bottom: -10px;
+        width: 94.5%;
+        }
+
+        .km-tablet #partfield-list ,
+        .km-tablet #mt-main-grower-list-view,
+        .km-tablet #edit-listview  {
+        width: 93.2%;
+        margin: 20px;
+        }
+             
+        .km-tablet #right {
+        width: 6%;
+        margin-top: 10px;
+        display: inline;
+        background: white;
+        float: right;
+        }
+
+        .km-tablet #backPartField  {
+        margin-top: 8px;
+        padding-top: 2px;
+        }
+
+        .km-tablet #mt-main-layout-navbar {
+        background: -webkit-linear-gradient(top,  
+                                rgba(110, 217, 254, 0.95) 0%, 
+                                rgba(97, 168, 192, 0.95) 50%,
+                                rgba(97, 168, 191, 0.95) 100%);
+        }
+
+        .km-tablet .km-header .km-navbar {
+        color: #FFF;
+        border-color: rgba(0,0,0,0.4);
+                background: -webkit-linear-gradient(top,  
+                                rgba(110, 217, 254, 0.95) 0%, 
+                                rgba(97, 168, 192, 0.95) 50%,
+                                rgba(97, 168, 191, 0.95) 100%);
+        }
+
+        .km-tablet .km-ios .km-view-title, .km-tablet .km-ios .km-modalview .km-view-title {
+        line-height: 2.2em;
+        color: #FFF;
+        text-shadow: none;
+        }
 
 </style>
 
 
       <!--template for Grower list -->
     <script type="text/x-kendo-template" id="grower_template">  
-        # var ecodedURI = '\\#fieldlist-view?GrowerId=' +
+         # var countyName =  County #
+         # var businessName =  BusinessName #
+         # var ecodedURI = '\\#fieldlist-view?GrowerId=' +
                          Id + '&BusinessName=' + 
                          BusinessName + '&CropYear=' +
-                         CropYearId #
+                         CropYearId  + '&UserId=' + 
+                         EntityTypeCodeValueId #
 
-   <a href="#:ecodedURI#" >
-        <div class="mt-grower-details">
-        <span class="mt-listitem-title">#:BusinessName# </span><br/> 
-        <span class="mt-highlight-label">#:County# County, #:State#</span>
-        </div>
-      </a>    
+      #if (businessName == "" || businessName == null) 
+        {#
+                  <a href="#:ecodedURI#" >
+                    <div class="mt-grower-details">
+                    <span class="mt-listitem-title">(Grower Name is missing)</span><br/> 
+                    <span class="mt-highlight-label"></span>
+                    </div>
+                </a>   
+     #  }
+        else
+        {
+            if (countyName == "" || countyName == null) 
+            {#
+                <a href="#:ecodedURI#" >
+                    <div class="mt-grower-details">
+                    <span class="mt-listitem-title">#:BusinessName# </span><br/> 
+                    <span class="mt-highlight-label">(missing county/state information)</span>
+                    </div>
+                </a>    
+          #  }
+            else
+            { #
+                <a href="#:ecodedURI#" >
+                    <div class="mt-grower-details">
+                    <span class="mt-listitem-title">#:BusinessName# </span><br/> 
+                    <span class="mt-highlight-label">#:County# County, #:State#</span>
+                    </div>
+                </a> 
+          #  }  
+        }#
     </script>
 
 
@@ -873,13 +989,47 @@
 
     <script>
         $(document).ready(function () {
+            myCropYear = "2013";
+            mySeasonValue = "21";
+            mySeasonName = "Winter";
+            myFarmOperationValue = "22";
+            myFarmOperationName = "Plant";
+            $("span.titleDetails").html(" " + myCropYear + " - " + mySeasonName + " " + myFarmOperationName + " ");
+
             // create DatePicker from input HTML element
             $("#datepicker1").kendoDatePicker();
+
+            if (kendo.support.mobileOS.tablet) {
+                $('#custom-footer').css({ height: "7%"} );
+                $('#custom-tabstrip').css({ height: "100%"});
+                $('#fieldlist-profile').css({ background: "transparent" });
+                $('#preferences-button').css({ background: "transparent" });
+                $('#map-button').css({ background: "transparent" });
+                $('#history-button').css({ background: "transparent" });
+                $('#more-button').css({ background: "transparent" });
+            }
+
+            // create DropDownList from select HTML element
+            //$("#cropyeartest").kendoDropDownList({
+            //    dataSource: ["2013", "2014", "2015", "--Select One--"],
+            //    value: "--Select One--"
+            //});
+            //$("#seasontest").kendoDropDownList({
+            //    dataSource: ["21-Fall", "22-Spring", "--Select One--"],
+            //    value: "--Select One--"
+            //});
+            //$("#farmoperationtest").kendoDropDownList({
+            //    dataSource: ["22-Farm Operation", "--Select One--"],
+            //    value: "--Select One--"
+            //});
+
+      //      alert("Doc Ready Season Value = " + mySeasonValue);
         });
 
         MyAgDataMobile.main.initializeApp();
 
         function onGrowersClick(e) {
+        //    alert("Grower Click Crop Year Value = " + myCropYear);
             MyAgDataMobile.common.navigateToView('#Growerlist-view');
         }
 
@@ -887,7 +1037,7 @@
     <script>
         //Change Crop Function
         function cropSelect(e) {
-            alert('Select Crop');
+          //  alert('Select Crop');
             //   var dropDownVal = $("#CropDropDown").val();
             //    alert("value = " + dropDownVal);
             ////alert("Crop Code Value = " + MyAgDataMobile.fieldDetail.viewModel.cropCode);
@@ -917,7 +1067,7 @@
        }
 
        function tabstrip_select(e) {
-           alert("selected tab");
+        //   alert("selected tab");
            var x = e.item;
            var selectedIndex = $(e.item).index();
        }
@@ -926,7 +1076,7 @@
            selectable: true
        });
 
-       function tabChange(e) {
+   //    function tabChange(e) {
 
        //    alert("old tab change " + this.currentItem().text()); //previous selected
 
@@ -974,7 +1124,7 @@
        //    $('.km-preferences::before').kendoMobileTabStrip(  .css({ 'background-image': 'url(../images/IconSeasonSelected.png)' });
      //      $('.km-maps::after').css({ 'background-image': 'url(../images/IconSeasonSelected.png)' });
 
-           $('#titleDetails').html("<span class='titleDetails' id='titleDetails'>test</span>");  // not supported
+ //          $('#titleDetails').html("<span class='titleDetails' id='titleDetails'>test</span>");  // not supported
          //  $("p").text("<b>Some</b> new text.");
 
            /*
@@ -987,7 +1137,7 @@
                    $("#modal_tabs").data("kendoMobileTabStrip").select(1);  // not supported
                }
            } */
-       }
+  //     }
 
 
 </script>

@@ -5,6 +5,7 @@ MyAgDataMobile.fieldList = (function () {
     var viewModel = kendo.observable({
         fieldList: {},
         selectedGrower: {
+            userId: "",
             growerId: "",
             growerName: "",
             cropYear: ""
@@ -19,11 +20,11 @@ MyAgDataMobile.fieldList = (function () {
             url: MyAgDataMobile.configuration.getFieldListUrl,
 //            data: { id: 16, growerId: 2036, cropYear: 2013, seasonNumber: 44, farmOpNumber: 22, groupBy: groupBy},    //id=16&growerId=2036&cropYear=2013&seasonNumber=44&farmOpNumber=22
             data: {
-                userId: 16,
+                userId: viewModel.selectedGrower.userId, // 16,
                 growerId: viewModel.selectedGrower.growerId,
-                cropYear: 2013,
-                seasonValueId: 21,
-                farmOperationValueId: 22,
+                cropYear: myCropYear, // viewModel.selectedGrower.cropYear,
+                seasonValueId: mySeasonValue, // 21,
+                farmOperationValueId: myFarmOperationValue, // 22,
                 GroupByItem: groupBy
             },    
             requestType: "GET",
@@ -73,7 +74,8 @@ MyAgDataMobile.fieldList = (function () {
 
     //handler for show event of the view
     function show(e) {
-        // alert('made it to the show list');
+      //  alert("Field List Show Season Value = " + mySeasonValue);
+     //   alert('made it to the Initialize Field list');
         var buttongroup = $("#fieldlistButtonGroup").data("kendoMobileButtonGroup");
 
         //hard coding today's date for selected date
@@ -81,6 +83,7 @@ MyAgDataMobile.fieldList = (function () {
         //read the selected movie's details from the query string
         if (e.view.params.GrowerId != null) {
             viewModel.set("selectedGrower", {
+                userId: e.view.params.UserId,
                 growerId: e.view.params.GrowerId,
                 growerName: e.view.params.BusinessName,
                 cropYear: e.view.params.CropYear

@@ -204,7 +204,7 @@
     }
 
     function CropCodeChange() {
-        alert("Change the Crop Code");
+     //   alert("Change the Crop Code");
     }
 
     //handler for show event of the view
