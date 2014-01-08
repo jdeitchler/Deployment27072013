@@ -35,7 +35,10 @@ MyAgDataMobile.dataAccess = (function () {
             error: function (xhr, status, errorThrown) {
                 switch(xhr.status){
 
-                    case '401' :
+                    case '401':
+                        alert('409 Unable to locate User. Please check the login credentials you entered. ' + errorThrown);
+                        break;
+                    case '401':
                         alert('401 Unauthorized access detected.Please check the credentials you entered. ' + errorThrown);
                         break;
                     case '500' :
